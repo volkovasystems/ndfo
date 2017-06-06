@@ -1,6 +1,6 @@
 {
   "name": "ndfo",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Undefined object class wrapper.",
   "main": "ndfo.js",
   "support": "ndfo.support.js",
@@ -24,6 +24,9 @@
     "ndfo"
   ],
   "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "contributors": [
+    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/volkovasystems/ndfo/issues"
@@ -33,11 +36,11 @@
     "babel-runtime": "^6.23.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.0",
-    "babel-core": "^6.24.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-latest": "^6.24.0",
-    "source-map-loader": "^0.2.0",
-    "webpack": "^2.2.1"
+    "babel-preset-latest": "^6.24.1",
+    "source-map-loader": "^0.2.1",
+    "webpack": "^2.6.1"
   }
 }

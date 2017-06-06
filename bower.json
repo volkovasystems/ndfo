@@ -1,12 +1,13 @@
 {
   "name": "ndfo",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Undefined object class wrapper.",
   "main": "ndfo.js",
   "support": "ndfo.support.js",
   "deploy": "ndfo.deploy.js",
   "authors": [
-    "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
+    "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+	"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
   ],
   "license": "MIT",
   "keywords": [
