@@ -1,16 +1,16 @@
-
+const assert = require( "assert" );
 const ndfo = require( "./ndfo.js" );
 
-console.log( ndfo( ) );
+assert.equal( JSON.stringify( ndfo( ) ), '"[object Undefined]"', "should be equal" );
 
-console.log( JSON.stringify( ndfo( ) ) );
+assert.equal( `${ ndfo( ) }`, "", "should be empty string" );
 
-console.log( `${ ndfo( ) }` );
+assert.equal( +ndfo( ), 0, "should have value 0" );
 
-console.log( +ndfo( ) );
+assert.equal( !!( ndfo( ) ), true, "should be true" );
 
-console.log( !!( ndfo( ) ) );
+assert.equal( ( ndfo( ) ) + "", "false", "should be 'false'" );
 
-console.log( ( ndfo( ) ) + "" );
+assert.equal( ( ndfo( "[object Undefined]" ) ) + "", "false", "should be 'false'" );
 
-console.log( ( ndfo( "[object Undefined]" ) ) + "" );
+console.log( "ok" );
