@@ -1,8 +1,36 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<script
-			type="application/javascript"
-			src="./ndfo.deploy.js">
-		</script>
+		<title>ndfo unit test</title>
+
+		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+
+		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+
+		<script type="application/javascript" src="./ndfo.deploy.js"></script>
 	</head>
+
+	<body>
+		<div id="qunit"></div>
+
+		<div id="qunit-fixture"></div>
+
+		<script type="application/javascript">
+			QUnit.test( "ndfo unit test", function( assert ) {
+
+				assert.equal( JSON.stringify( ndfo( ) ), '"[object Undefined]"', "should be equal" );
+
+				assert.equal( `${ ndfo( ) }`, "", "should be empty string" );
+
+				assert.equal( +ndfo( ), 0, "should have value 0" );
+
+				assert.equal( !!( ndfo( ) ), true, "should be true" );
+
+				assert.equal( ( ndfo( ) ) + "", "false", "should be 'false'" );
+
+				assert.equal( ( ndfo( "[object Undefined]" ) ) + "", "false", "should be 'false'" );
+				
+			} );
+		</script>
+	</body>
 </html>
