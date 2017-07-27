@@ -1,0 +1,84 @@
+{
+	"state": {
+		"passed": 1,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-07-27T18:04:58.496Z",
+	"end": "2017-07-27T18:06:17.214Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": null
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd"
+	},
+	"suites": [
+		{
+			"name": "ndfo",
+			"duration": 0,
+			"start": "2017-07-27T18:06:16.283Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "ndfo",
+			"duration": 743,
+			"start": "2017-07-27T18:06:16.285Z",
+			"end": "2017-07-27T18:06:17.028Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-07-27T18:06:16.286Z",
+					"end": "2017-07-27T18:06:16.286Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "ndfo",
+					"associatedTest": "should return Undefined instance"
+				},
+				{
+					"start": "2017-07-27T18:06:17.027Z",
+					"end": "2017-07-27T18:06:17.028Z",
+					"duration": 1,
+					"title": "\"after each\" hook",
+					"associatedSuite": "ndfo",
+					"associatedTest": "should return Undefined instance"
+				},
+				{
+					"start": "2017-07-27T18:06:17.028Z",
+					"end": "2017-07-27T18:06:17.029Z",
+					"duration": 1,
+					"title": "\"after all\" hook",
+					"associatedSuite": "ndfo"
+				}
+			]
+		},
+		{
+			"name": "`ndfo( )`",
+			"duration": 743,
+			"start": "2017-07-27T18:06:16.285Z",
+			"end": "2017-07-27T18:06:17.028Z",
+			"tests": [
+				{
+					"name": "should return Undefined instance",
+					"start": "2017-07-27T18:06:16.285Z",
+					"end": "2017-07-27T18:06:17.026Z",
+					"duration": 741,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}

@@ -30,8 +30,8 @@
 	@submodule-configuration:
 		{
 			"package": "ndfo",
-			"path": "ndfo/undefined.js",
-			"file": "undefined.js",
+			"path": "ndfo/undefined.module.js",
+			"file": "undefined.module.js",
 			"module": "ndfo",
 			"author": "Richeve S. Bebedor",
 			"eMail": "richeve.bebedor@gmail.com",
@@ -50,60 +50,80 @@
 	@submodule-documentation:
 		Undefined class wrapper.
 	@end-submodule-documentation
+
+	@include:
+		{
+			"ehm": "ehm"
+		}
+	@end-include
 */
 
+const Meta = require( "ehm" )( );
+
+const EMPTY_STRING = "";
 const UNDEFINED = undefined;
-const UNDEFINED_TAG = Object.prototype.toString.call( UNDEFINED );
+const SERIALIZE_UNDEFINED_TAG = "[undefined Undefined:undefined]";
+const META_SERIALIZE_UNDEFINED_TAG = Meta.create( UNDEFINED ).serialize( );
 
-const NAME = Symbol.for( "name" );
-const VALUE = Symbol.for( "value" );
-const TYPE = Symbol.for( "type" );
-
-class Undefined {
+class Undefined extends Meta {
 	static [ Symbol.hasInstance ]( instance ){
-		return instance === UNDEFINED || ( instance || { } ).constructor === Undefined;
+		return (
+			typeof instance == "undefined" ||
+			Meta.instanceOf( instance, this )
+		);
 	}
 
-	constructor( entity ){
-		if( ( typeof entity == "string" && entity === UNDEFINED_TAG ) ||
-			entity === UNDEFINED || !arguments.length )
-		{
-			this[ NAME ] = "undefined";
-			this[ VALUE ] = entity || UNDEFINED;
-			this[ TYPE ] = typeof this.value;
+	static deserialize( data, parser, blueprint ){
+		/*;
+			@meta-configuration:
+				{
+					"data": "*",
+					"parser": "function",
+					"blueprint": "function"
+				}
+			@end-meta-configuration
+		*/
 
-		}else if( arguments.length ){
-			throw new Error( `invalid undefined value, ${ entity }` );
-		}
+		return Meta.create( this, UNDEFINED );
 	}
 
-	toString( ){
-		return UNDEFINED_TAG;
+	constructor( ){
+		super( UNDEFINED, "Undefined" );
 	}
 
-	get [ Symbol.toStringTag ]( ){
-		return "Undefined";
+	get [ Meta.OBJECT ]( ){
+		return EMPTY_STRING;
 	}
 
-	valueOf( ){
-		return UNDEFINED;
+	get [ Meta.BOOLEAN ]( ){
+		return false;
 	}
 
-	[ Symbol.toPrimitive ]( hint ){
-		switch( hint ){
-			case "string":
-				return "";
-
-			case "number":
-				return 0;
-
-			default:
-				return false;
-		}
+	get [ Meta.STRING ]( ){
+		return EMPTY_STRING;
 	}
 
-	toJSON( ){
-		return this.toString( );
+	get [ Meta.NUMBER ]( ){
+		return NaN;
+	}
+
+	serialize( parser ){
+		/*;
+			@meta-configuration:
+				{
+					"parser": "function"
+				}
+			@end-meta-configuration
+		*/
+
+		return SERIALIZE_UNDEFINED_TAG;
+	}
+
+	isCompatible( tag ){
+		return (
+			tag === SERIALIZE_UNDEFINED_TAG
+			|| tag === META_SERIALIZE_UNDEFINED_TAG
+		);
 	}
 }
 

@@ -1,36 +1,28 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>ndfo unit test</title>
+		<meta charset="utf-8">
 
-		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+		<title>test:ndfo</title>
 
-		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css"/>
 
 		<script type="application/javascript" src="./ndfo.deploy.js"></script>
 	</head>
 
 	<body>
-		<div id="qunit"></div>
+		<div id="mocha"></div>
 
-		<div id="qunit-fixture"></div>
+		<script type="application/javascript" src="https://unpkg.com/mocha/mocha.js"></script>
 
 		<script type="application/javascript">
-			QUnit.test( "ndfo unit test", function( assert ) {
+			mocha.setup( "bdd" );
+		</script>
 
-				assert.equal( JSON.stringify( ndfo( ) ), '"[object Undefined]"', "should be equal" );
+		<script type="application/javascript" src="./test.deploy.js"></script>
 
-				assert.equal( `${ ndfo( ) }`, "", "should be empty string" );
-
-				assert.equal( +ndfo( ), 0, "should have value 0" );
-
-				assert.equal( !!( ndfo( ) ), true, "should be true" );
-
-				assert.equal( ( ndfo( ) ) + "", "false", "should be 'false'" );
-
-				assert.equal( ( ndfo( "[object Undefined]" ) ) + "", "false", "should be 'false'" );
-				
-			} );
+		<script type="application/javascript">
+			mocha.run( );
 		</script>
 	</body>
 </html>

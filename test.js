@@ -1,7 +1,7 @@
 "use strict";
 
 /*;
-	@module-license:
+	@test-license:
 		The MIT License (MIT)
 		@mit-license
 
@@ -25,53 +25,66 @@
 		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 		SOFTWARE.
-	@end-module-license
+	@end-test-license
 
-	@module-configuration:
+	@test-configuration:
 		{
 			"package": "ndfo",
-			"path": "ndfo/ndfo.js",
-			"file": "ndfo.js",
-			"module": "ndfo",
+			"path": "ndfo/test.module.js",
+			"file": "test.module.js",
+			"module": "test",
 			"author": "Richeve S. Bebedor",
 			"eMail": "richeve.bebedor@gmail.com",
-			"contributors": [
-				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-				"Vinse Vinalon <vinsevinalon@gmail.com>"
-			],
-			"repository": "https://github.com/volkovasystems/ndfo.git",
-			"test": "ndfo-test.js",
-			"global": true
+			"repository": "https://github.com/volkovasystems/ndfo.git"
 		}
-	@end-module-configuration
+	@end-test-configuration
 
-	@module-documentation:
-		Undefined object class wrapper.
-	@end-module-documentation
+	@test-documentation:
+
+	@end-test-documentation
 
 	@include:
 		{
-			"ehm": "ehm",
-			"harden": "harden"
+			"assert": "should",
+			"ndfo": "ndfo"
 		}
 	@end-include
 */
 
-const harden = require( "harden" );
-
-const Meta = require( "ehm" )( );
+const assert = require( "should" );
 
 //: @server:
-const Undefined = require( "./undefined.js" );
+const ndfo = require( "./ndfo.js" );
 //: @end-server
 
 
 
-const ndfo = function ndfo( ){
-	return Meta.create( Undefined, undefined );
-};
 
-harden( "Undefined", Undefined, ndfo );
-harden( "Undefined", Undefined, Meta );
 
-module.exports = ndfo;
+
+//: @server:
+
+describe( "ndfo", ( ) => {
+
+	describe( "`ndfo( )`", ( ) => {
+		it( "should return Undefined instance", ( ) => {
+			let data = ndfo( );
+
+			assert.equal( typeof data, "object" );
+
+			assert.equal( data.constructor.name, "Undefined" );
+
+			assert.equal( data.valueOf( ), undefined );
+
+		} );
+	} );
+
+} );
+
+//: @end-server
+
+
+
+
+
+
