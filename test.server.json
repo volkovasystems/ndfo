@@ -5,15 +5,15 @@
 		"passes": 1,
 		"pending": 0,
 		"failures": 0,
-		"start": "2017-08-01T10:06:04.357Z",
-		"end": "2017-08-01T10:06:04.362Z",
-		"duration": 5
+		"start": "2017-08-01T15:13:51.482Z",
+		"end": "2017-08-01T15:13:51.489Z",
+		"duration": 7
 	},
 	"tests": [
 		{
 			"title": "should return Undefined instance",
 			"fullTitle": "ndfo `ndfo( )` should return Undefined instance",
-			"duration": 1,
+			"duration": 2,
 			"currentRetry": 0,
 			"err": {}
 		}
@@ -24,7 +24,7 @@
 		{
 			"title": "should return Undefined instance",
 			"fullTitle": "ndfo `ndfo( )` should return Undefined instance",
-			"duration": 1,
+			"duration": 2,
 			"currentRetry": 0,
 			"err": {}
 		}

@@ -1,6 +1,6 @@
 {
 	"name": "ndfo",
-	"version": "0.5.0",
+	"version": "0.6.0",
 	"description": "Undefined object class wrapper.",
 	"main": "ndfo.js",
 	"support": "ndfo.support.js",
@@ -30,7 +30,7 @@
 		"harden": "^0.23.0"
 	},
 	"dependencies": {
-		"ehm": "^0.18.0",
+		"ehm": "^0.19.0",
 		"harden": "^0.23.0"
 	}
 }
