@@ -67,8 +67,20 @@ const Undefined = require( "./undefined.js" );
 
 
 
-const ndfo = function ndfo( ){
-	return Meta.create( Undefined, undefined );
+const ndfo = function ndfo( entity ){
+	/*;
+		@meta-configuration:
+			{
+				"entity:required": undefined
+			}
+		@end-meta-configuration
+	*/
+
+	if( typeof entity != "undefined" ){
+		return Meta.create( Undefined, undefined );
+	}
+
+	return Meta.create( Undefined, entity );
 };
 
 harden( "Undefined", Undefined, ndfo );

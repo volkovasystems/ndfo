@@ -68,8 +68,8 @@ const META_SERIALIZE_UNDEFINED_TAG = Meta.create( UNDEFINED ).serialize( );
 class Undefined extends Meta {
 	static [ Symbol.hasInstance ]( instance ){
 		return (
-			typeof instance == "undefined" ||
-			Meta.instanceOf( instance, this )
+			typeof instance == "undefined"
+			|| Meta.instanceOf( instance, this )
 		);
 	}
 
@@ -84,15 +84,28 @@ class Undefined extends Meta {
 			@end-meta-configuration
 		*/
 
-		return Meta.create( this, UNDEFINED );
+		let entity = Meta.deserialize( data, parser, this );
+
+		if( entity.isCorrupted( ) ){
+			return entity.revert( );
+		}
+
+		return entity;
 	}
 
-	constructor( ){
-		super( UNDEFINED, "Undefined" );
+	static isCompatible( tag ){
+		return (
+			tag === SERIALIZE_UNDEFINED_TAG
+			|| tag === META_SERIALIZE_UNDEFINED_TAG
+		);
+	};
+
+	constructor( entity ){
+		super( entity, "Undefined" );
 	}
 
-	get [ Meta.OBJECT ]( ){
-		return EMPTY_STRING;
+	check( entity ){
+		return typeof entity == "undefined";
 	}
 
 	get [ Meta.BOOLEAN ]( ){
@@ -119,10 +132,10 @@ class Undefined extends Meta {
 		return SERIALIZE_UNDEFINED_TAG;
 	}
 
-	isCompatible( tag ){
+	isEqual( entity ){
 		return (
-			tag === SERIALIZE_UNDEFINED_TAG
-			|| tag === META_SERIALIZE_UNDEFINED_TAG
+			entity instanceof Undefined
+			|| typeof entity == "undefined"
 		);
 	}
 }
