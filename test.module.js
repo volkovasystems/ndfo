@@ -45,13 +45,13 @@
 
 	@include:
 		{
-			"assert": "should",
+			"assert": "should/as-function",
 			"ndfo": "ndfo"
 		}
 	@end-include
 */
 
-const assert = require( "should" );
+const assert = require( "should/as-function" );
 
 //: @server:
 const ndfo = require( "./ndfo.js" );
@@ -83,6 +83,54 @@ describe( "ndfo", ( ) => {
 		} );
 	} );
 
+	describe( "`ndfo( undefined )`", ( ) => {
+		it( "should return Undefined instance", ( ) => {
+			let data = ndfo( undefined );
+
+			assert.equal( typeof data, "object" );
+
+			assert.equal( data.constructor.name, "Undefined" );
+
+			assert.equal( data.valueOf( ), undefined );
+
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toString( )`", ( ) => {
+		it( "should return string type", ( ) => {
+			assert.equal( typeof ndfo( undefined ).toString( ), "string" );
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toNumber( )`", ( ) => {
+		it( "should return NaN", ( ) => {
+			assert.equal( ndfo( undefined ).toNumber( ).toString( ), "NaN" );
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toBoolean( )`", ( ) => {
+		it( "should return boolean type", ( ) => {
+			assert.equal( typeof ndfo( undefined ).toBoolean( ), "boolean" );
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toObject( )`", ( ) => {
+		it( "should return object type", ( ) => {
+			let descriptor = ndfo( undefined ).toObject( );
+
+			assert.equal( typeof descriptor, "object" );
+
+			assert.equal( "type" in descriptor, true );
+
+			assert.equal( "name" in descriptor, true );
+
+			assert.equal( "value" in descriptor, true );
+
+			assert.equal( "format" in descriptor, true );
+
+		} );
+	} );
+
 } );
 
 //: @end-server
@@ -101,6 +149,55 @@ describe( "ndfo", ( ) => {
 			assert.equal( data.constructor.name, "Undefined" );
 
 			assert.equal( data.valueOf( ), undefined );
+
+		} );
+	} );
+
+	describe( "`ndfo( undefined )`", ( ) => {
+		it( "should return Undefined instance", ( ) => {
+			let data = ndfo( undefined );
+
+			assert.equal( typeof data, "object" );
+
+			assert.equal( data.constructor.name, "Undefined" );
+
+			assert.equal( data.valueOf( ), undefined );
+
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toString( )`", ( ) => {
+		it( "should return string type", ( ) => {
+			assert.equal( typeof ndfo( undefined ).toString( ), "string" );
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toNumber( )`", ( ) => {
+		it( "should return NaN", ( ) => {
+			assert.equal( ndfo( undefined ).toNumber( ).toString( ), "NaN" );
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toBoolean( )`", ( ) => {
+		it( "should return boolean type", ( ) => {
+			assert.equal( typeof ndfo( undefined ).toBoolean( ), "boolean" );
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toObject( )`", ( ) => {
+		it( "should return object type", ( ) => {
+			let descriptor = ndfo( undefined ).toObject( );
+
+			assert.equal( typeof descriptor, "object" );
+
+			assert.equal( "type" in descriptor, true );
+
+			assert.equal( "name" in descriptor, true );
+
+			assert.equal( "value" in descriptor, true );
+
+			assert.equal( "format" in descriptor, true );
+
 		} );
 	} );
 
@@ -124,6 +221,102 @@ describe( "ndfo", ( ) => {
 			assert.equal( browser.url( bridgeURL ).execute( ( ) => ndfo( ).constructor.name ).value, "Undefined" );
 
 			assert.equal( browser.url( bridgeURL ).execute( ( ) => `${ ndfo( ).valueOf( ) }` ).value, "undefined" );
+
+		} );
+	} );
+
+	describe( "`ndfo( undefined )`", ( ) => {
+		it( "should return Undefined instance", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					let data = ndfo( undefined );
+
+					let test = typeof data == "object" &&
+						data.constructor.name == "Undefined" &&
+						data.valueOf( ) == undefined;
+
+					return test;
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.equal( result, true );
+
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toString( )`", ( ) => {
+		it( "should return string type", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return typeof ndfo( undefined ).toString( );
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.equal( result, "string" );
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toNumber( )`", ( ) => {
+		it( "should return NaN", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return ndfo( undefined ).toNumber( ).toString( );
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.equal( result, "NaN" );
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toBoolean( )`", ( ) => {
+		it( "should return boolean type", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return typeof ndfo( undefined ).toBoolean( );
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.equal( result, "boolean" );
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toObject( )`", ( ) => {
+		it( "should return object type", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					let descriptor = ndfo( undefined ).toObject( );
+
+					let test = typeof descriptor == "object" &&
+						"type" in descriptor == true &&
+						"name" in descriptor == true &&
+						"value" in descriptor == true &&
+						"format" in descriptor == true;
+
+					return test;
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.equal( result, true );
 
 		} );
 	} );
