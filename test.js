@@ -45,13 +45,13 @@
 
 	@include:
 		{
-			"assert": "should",
+			"assert": "should/as-function",
 			"ndfo": "ndfo"
 		}
 	@end-include
 */
 
-const assert = require( "should" );
+const assert = require( "should/as-function" );
 
 //: @server:
 const ndfo = require( "./ndfo.js" );
@@ -75,6 +75,54 @@ describe( "ndfo", ( ) => {
 			assert.equal( data.constructor.name, "Undefined" );
 
 			assert.equal( data.valueOf( ), undefined );
+
+		} );
+	} );
+
+	describe( "`ndfo( undefined )`", ( ) => {
+		it( "should return Undefined instance", ( ) => {
+			let data = ndfo( undefined );
+
+			assert.equal( typeof data, "object" );
+
+			assert.equal( data.constructor.name, "Undefined" );
+
+			assert.equal( data.valueOf( ), undefined );
+
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toString( )`", ( ) => {
+		it( "should return string type", ( ) => {
+			assert.equal( typeof ndfo( undefined ).toString( ), "string" );
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toNumber( )`", ( ) => {
+		it( "should return NaN", ( ) => {
+			assert.equal( ndfo( undefined ).toNumber( ).toString( ), "NaN" );
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toBoolean( )`", ( ) => {
+		it( "should return boolean type", ( ) => {
+			assert.equal( typeof ndfo( undefined ).toBoolean( ), "boolean" );
+		} );
+	} );
+
+	describe( "`ndfo( undefined ).toObject( )`", ( ) => {
+		it( "should return object type", ( ) => {
+			let descriptor = ndfo( undefined ).toObject( );
+
+			assert.equal( typeof descriptor, "object" );
+
+			assert.equal( "type" in descriptor, true );
+
+			assert.equal( "name" in descriptor, true );
+
+			assert.equal( "value" in descriptor, true );
+
+			assert.equal( "format" in descriptor, true );
 
 		} );
 	} );

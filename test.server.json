@@ -1,19 +1,54 @@
 {
 	"stats": {
-		"suites": 2,
-		"tests": 1,
-		"passes": 1,
+		"suites": 7,
+		"tests": 6,
+		"passes": 6,
 		"pending": 0,
 		"failures": 0,
-		"start": "2017-08-07T12:32:51.405Z",
-		"end": "2017-08-07T12:32:51.409Z",
-		"duration": 4
+		"start": "2017-09-14T07:06:06.693Z",
+		"end": "2017-09-14T07:06:06.699Z",
+		"duration": 6
 	},
 	"tests": [
 		{
 			"title": "should return Undefined instance",
 			"fullTitle": "ndfo `ndfo( )` should return Undefined instance",
 			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should return Undefined instance",
+			"fullTitle": "ndfo `ndfo( undefined )` should return Undefined instance",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should return string type",
+			"fullTitle": "ndfo `ndfo( undefined ).toString( )` should return string type",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should return NaN",
+			"fullTitle": "ndfo `ndfo( undefined ).toNumber( )` should return NaN",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should return boolean type",
+			"fullTitle": "ndfo `ndfo( undefined ).toBoolean( )` should return boolean type",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should return object type",
+			"fullTitle": "ndfo `ndfo( undefined ).toObject( )` should return object type",
+			"duration": 1,
 			"currentRetry": 0,
 			"err": {}
 		}
@@ -25,6 +60,41 @@
 			"title": "should return Undefined instance",
 			"fullTitle": "ndfo `ndfo( )` should return Undefined instance",
 			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should return Undefined instance",
+			"fullTitle": "ndfo `ndfo( undefined )` should return Undefined instance",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should return string type",
+			"fullTitle": "ndfo `ndfo( undefined ).toString( )` should return string type",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should return NaN",
+			"fullTitle": "ndfo `ndfo( undefined ).toNumber( )` should return NaN",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should return boolean type",
+			"fullTitle": "ndfo `ndfo( undefined ).toBoolean( )` should return boolean type",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should return object type",
+			"fullTitle": "ndfo `ndfo( undefined ).toObject( )` should return object type",
+			"duration": 1,
 			"currentRetry": 0,
 			"err": {}
 		}
